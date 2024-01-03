@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -52,10 +54,13 @@ public class MainActivity extends AppCompatActivity  {
 
        binding.buttonTrue.setOnClickListener(v -> {
             checkAnswer(true);
+            updateQuestion();
        });
 
         binding.buttonFalse.setOnClickListener(v -> {
             checkAnswer(false);
+            updateQuestion();
+
         });
 
     }
@@ -73,6 +78,8 @@ public class MainActivity extends AppCompatActivity  {
      }
      else {
          snackMessageId = R.string.incorrect;
+         shakeAnimation();
+
      }
         Snackbar.make(binding.cardView,snackMessageId, Snackbar.LENGTH_SHORT).show();
     }
@@ -87,6 +94,12 @@ public class MainActivity extends AppCompatActivity  {
         String question = questionList.get(currentQuestionIndex).getAnswer();
         binding.questionTextView.setText(question);
         updateCounter((ArrayList<Question>) questionList);
+    }
+
+    public void shakeAnimation()
+    {
+        Animation shake = AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake_animation);
+        binding.cardView.setAnimation(shake);
     }
 
 }
