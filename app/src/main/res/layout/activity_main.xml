@@ -72,7 +72,7 @@
             android:id="@+id/button_true"
             style="@style/ButtonStyle"
             android:layout_width="0dp"
-            android:text="@string/false_button"
+            android:text="@string/true_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
