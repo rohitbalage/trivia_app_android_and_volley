@@ -3,6 +3,7 @@ package com.rrbofficial.triviaapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.graphics.Color;
 import android.os.Binder;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
@@ -100,6 +101,23 @@ public class MainActivity extends AppCompatActivity  {
     {
         Animation shake = AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake_animation);
         binding.cardView.setAnimation(shake);
+
+        shake.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            binding.questionTextView.setTextColor(Color.RED);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                binding.questionTextView.setTextColor(Color.WHITE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
 }
